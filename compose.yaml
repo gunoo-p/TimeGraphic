@@ -1,0 +1,20 @@
+services:
+  server:
+    build: { context: ., target: dev }
+    command: npm run dev -w server
+    ports: ["3001:3001"]
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - .:/app
+      - /app/node_modules
+  web:
+    build: { context: ., target: dev }
+    command: npm run dev -w web -- --host
+    ports: ["5173:5173"]
+    environment:
+      API_URL: http://server:3001
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on: [server]
