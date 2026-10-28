@@ -45,7 +45,7 @@
 - 배포: `deploy` 스킬 참고
 
 ## 나눠 둔 설정 (`.claude/`)
-- `rules/`: 주제별 규칙. timeline 파일 형식은 `rules/timeline-format.md`
+- `rules/`: 주제별 규칙. timeline 파일 형식은 `rules/timeline-format.md`, 화면 작업은 `rules/ui.md`
 - `skills/`: 절차. 배포는 `skills/deploy`
 - `agents/`: 출력이 긴 일. 테스트는 `agents/test-runner.md`
 - `hooks/`: 절대 막을 명령. `git push`, `docker push`, `rm -rf`는 `hooks/block-risky.sh`가 차단 (등록은 `settings.json`)
