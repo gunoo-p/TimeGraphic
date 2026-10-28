@@ -20,7 +20,7 @@
 - 피할 것: 검증되지 않은 수치, 과장된 표현, 불필요한 전문용어
 
 ## 기억과 연속성
-- 중요한 결정은 `MEMORY.md`에 남긴다. (저장소가 아니라 이 컴퓨터의 Claude 메모리 폴더 `~/.claude/projects/-Users-mac-orca-TimeGraph/memory/`)
+- 중요한 결정은 `MEMORY.md`에 남긴다. (저장소가 아니라 이 컴퓨터의 Claude 메모리 폴더 `~/.claude/projects/-Users-mac-orca-TimeGraphic/memory/`)
 - 세션을 끝낼 때 완료한 일, 진행 중인 일, 다음 할 일을 요약한다.
 
 ## 개발 작업 안전
@@ -41,14 +41,14 @@
 
 ## 실행
 - 개발: `docker compose up` (web :5173, server :3001, 소스 마운트로 자동 반영). 의존성 바꾸면 `docker compose up --build`
-- 배포: `docker build -t timegraphic .` → 컨테이너 1개. Hono가 API와 `web` 빌드 결과(`server/public`)를 함께 서빙. 포트는 `PORT` 환경변수(기본 3001)
+- 테스트: `test-runner` 에이전트에 맡긴다
+- 배포: `deploy` 스킬 참고
 
-## timeline/ 파일 형식
-- `_project.md`: `## 개요`, `## 기간`(`- 시작: YYYY-MM-DD`, `- 종료: YYYY-MM-DD | 미정`)
-- `<GitHub 아이디>.md`: 팀원 1명당 1개
-- `_unassigned.md`: GitHub 계정과 연결 안 된 커밋. 줄 끝에 git 작성자 이름
-- 활동: `### YYYY-MM-DD (요일)` 아래 `- 유형: 내용 | 커밋SHA` (SHA 없으면 수동 활동). 날짜 모름은 `### 날짜 미상`
-- 유형: `추가`(새 기능) / `수정`(기존 기능 변경, 애매하면 이것) / `재결정`(문서에서 다시 정함)
+## 나눠 둔 설정 (`.claude/`)
+- `rules/`: 주제별 규칙. timeline 파일 형식은 `rules/timeline-format.md`
+- `skills/`: 절차. 배포는 `skills/deploy`
+- `agents/`: 출력이 긴 일. 테스트는 `agents/test-runner.md`
+- `hooks/`: 절대 막을 명령. `git push`, `docker push`, `rm -rf`는 `hooks/block-risky.sh`가 차단 (등록은 `settings.json`)
 
 ## MVP 제외
 주기적 재반영, 팀원 합치기, 미지정 활동 배정 (명세서 "향후 과제")
