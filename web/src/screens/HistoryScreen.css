@@ -1,0 +1,163 @@
+.filters {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filters-search {
+  position: relative;
+  display: block;
+  color: var(--text-3);
+}
+
+.filters-search svg {
+  position: absolute;
+  left: 14px;
+  top: 15px;
+}
+
+.filters-search input {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px 0 42px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  font: inherit;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.filters-label {
+  font-size: 14px;
+  color: var(--text-2);
+  width: 56px;
+}
+
+.filter-chip {
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.filter-chip:hover {
+  background: var(--surface-2);
+}
+
+.filter-chip[aria-pressed='true'] {
+  border: 2px solid var(--primary);
+  background: var(--primary-soft);
+  color: var(--primary-text);
+  font-weight: 600;
+  padding: 0 13px;
+}
+
+.filter-chip-count {
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+.filter-chip[aria-pressed='true'] .filter-chip-count {
+  color: var(--primary-text);
+}
+
+.history-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.history-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.history-date {
+  font-size: 15px;
+  font-weight: 700;
+  padding: 8px 0;
+}
+
+.history-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.history-row:hover {
+  background: var(--surface-2);
+}
+
+.history-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.history-content {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.history-who {
+  font-size: 14px;
+  color: var(--text-3);
+}
+
+.history-empty {
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.history-empty strong {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.history-empty span {
+  font-size: 15px;
+  color: var(--text-3);
+}
+
+@media (max-width: 639px) {
+  .filters {
+    padding: 16px;
+  }
+
+  .filters-label {
+    width: 100%;
+  }
+}

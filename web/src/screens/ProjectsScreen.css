@@ -1,0 +1,150 @@
+.projects-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: var(--text-2);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.project-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+}
+
+button.project-card {
+  cursor: pointer;
+}
+
+button.project-card:hover {
+  background: var(--surface-2);
+}
+
+.project-card.is-empty {
+  border-style: dashed;
+}
+
+.project-card-top,
+.project-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.project-card-bottom {
+  align-items: center;
+}
+
+.project-card-name {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.project-card-name strong {
+  font-size: 18px;
+}
+
+.project-card-sub {
+  font-size: 14px;
+  color: var(--text-2);
+}
+
+.project-strip {
+  display: grid;
+  grid-template-columns: repeat(14, minmax(0, 1fr));
+  gap: 3px;
+}
+
+.project-day {
+  display: block;
+  height: 20px;
+  border-radius: 4px;
+  background: var(--surface-2);
+}
+
+.project-day.on {
+  background: var(--primary);
+}
+
+.project-day.now {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+
+.project-avatars {
+  display: flex;
+}
+
+.project-avatars .avatar {
+  border: 2px solid var(--surface);
+  margin-left: -6px;
+}
+
+.project-avatars .avatar:first-child {
+  margin-left: 0;
+}
+
+.projects-new {
+  min-height: 220px;
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text-2);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.projects-new > span {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--primary-soft);
+  color: var(--primary-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projects-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 14px;
+  color: var(--text-2);
+}
+
+.projects-legend > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.projects-legend .project-day {
+  width: 16px;
+  height: 16px;
+}
+
+@media (max-width: 639px) {
+  .projects-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -1,0 +1,194 @@
+.autofill {
+  max-width: 760px;
+}
+
+.autofill-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.autofill-back {
+  padding-left: 0;
+}
+
+.autofill-progress {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.autofill-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-2);
+}
+
+.autofill-bar {
+  height: 12px;
+  border-radius: 6px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.autofill-bar div {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 6px;
+}
+
+.autofill-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.autofill-steps li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.autofill-steps li > span:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.autofill-steps li.is-todo strong {
+  color: var(--text-3);
+}
+
+.autofill-steps small {
+  font-size: 14px;
+  color: var(--text-3);
+}
+
+.autofill-ic {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.autofill-ic.is-done {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.autofill-ic.is-todo {
+  border: 2px solid var(--border);
+}
+
+.autofill-note {
+  font-size: 14px;
+  color: var(--text-3);
+}
+
+.autofill-result {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.autofill-warn {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  background: var(--warning-soft);
+  border-radius: 8px;
+  padding: 8px 8px 8px 16px;
+  font-size: 15px;
+}
+
+.autofill-warn > span:first-child {
+  font-weight: 700;
+  color: var(--warning);
+}
+
+.autofill-warn-text {
+  flex: 1 1 300px;
+}
+
+.autofill-person {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.autofill-person.is-unknown {
+  border: 1px dashed var(--border-strong);
+}
+
+.autofill-person-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.autofill-person-head strong {
+  flex: 1;
+  font-size: 17px;
+}
+
+.autofill-person-head span {
+  font-size: 15px;
+  color: var(--text-2);
+}
+
+.autofill-person ul {
+  margin: 0;
+  padding: 0 0 0 48px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 15px;
+}
+
+.autofill-more {
+  color: var(--primary-text);
+  font-weight: 600;
+}
+
+.autofill-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+
+.autofill-actions > div {
+  display: flex;
+  gap: 12px;
+}
+
+@media (max-width: 639px) {
+  .autofill-progress {
+    padding: 20px 16px;
+  }
+
+  .autofill-person {
+    padding: 16px;
+  }
+
+  .autofill-person ul {
+    padding-left: 0;
+  }
+}

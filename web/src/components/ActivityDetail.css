@@ -1,0 +1,127 @@
+.detail-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: var(--text-2);
+}
+
+.detail-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.detail-head h1 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.detail-who {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.detail-who span {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-who small {
+  font-size: 14px;
+  color: var(--text-3);
+}
+
+.detail-more {
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-more span {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.detail-dev {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0 20px;
+}
+
+.detail-dev summary {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.detail-dev dl {
+  margin: 0 0 16px;
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr);
+  row-gap: 8px;
+  font-size: 14px;
+}
+
+.detail-dev dt {
+  color: var(--text-3);
+}
+
+.detail-dev dd {
+  margin: 0;
+}
+
+.detail-dev code {
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.detail-nearby {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detail-nearby > span {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.detail-nearby button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--surface-2);
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.detail-nearby button:hover {
+  background: var(--surface-2);
+}
+
+.detail-nearby-text {
+  flex: 1;
+  font-size: 15px;
+}
+
+.detail-nearby small {
+  font-size: 13px;
+  color: var(--text-3);
+}

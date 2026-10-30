@@ -1,0 +1,165 @@
+.add-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-top h1 {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.add-field {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-field legend,
+.add-label {
+  padding: 0;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.add-label {
+  margin-bottom: 0;
+}
+
+.add-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.add-opt {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.add-opt input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.add-opt:has(input:checked) {
+  border: 2px solid var(--primary);
+  background: var(--primary-soft);
+  padding: 7px 13px;
+}
+
+.add-opt:has(input:focus-visible) {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.add-types {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.add-type {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 12px 14px;
+}
+
+.add-type:has(input:checked) {
+  padding: 11px 13px;
+}
+
+.add-type-symbol {
+  font-size: 18px;
+}
+
+.add-type small {
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.add-date-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.add-field input[type='date'],
+.add-field textarea {
+  padding: 0 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  font: inherit;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.add-field input[type='date'] {
+  height: 48px;
+}
+
+.add-field input[type='date']:disabled {
+  background: var(--surface-2);
+  color: var(--text-3);
+}
+
+.add-field textarea {
+  padding: 12px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.add-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 15px;
+  color: var(--text-2);
+  cursor: pointer;
+}
+
+.add-check input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--primary);
+}
+
+.add-hint {
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+.add-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--surface-2);
+  padding-top: 20px;
+}
+
+.add-buttons {
+  display: flex;
+  gap: 12px;
+}

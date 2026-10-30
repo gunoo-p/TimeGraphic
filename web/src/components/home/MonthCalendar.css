@@ -1,0 +1,156 @@
+.month {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.month-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.month-head h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.month-head span {
+  font-size: 14px;
+  color: var(--text-2);
+}
+
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+  padding: 0 6px;
+}
+
+.month-heads span {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-3);
+  padding: 6px 0;
+}
+
+.month-week {
+  width: 100%;
+  padding: 6px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.month-week:hover {
+  background: var(--primary-soft);
+}
+
+.month-cell {
+  height: 76px;
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.month-cell.blank {
+  background: transparent;
+  border-color: transparent;
+}
+
+.month-cell.idle,
+.month-cell.future {
+  color: var(--text-3);
+}
+
+.month-cell.future {
+  border-style: dashed;
+}
+
+.month-cell.busy .month-num {
+  font-weight: 600;
+}
+
+.month-cell.today {
+  border: 2px solid var(--primary);
+  background: var(--primary-soft);
+  padding: 7px;
+}
+
+.month-cell.today .month-num {
+  color: var(--primary-text);
+  font-weight: 700;
+}
+
+.month-chips {
+  display: flex;
+  gap: 4px;
+}
+
+.month-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 14px;
+  color: var(--text-2);
+  padding-top: 8px;
+}
+
+.month-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.zoom-in {
+  animation: zoom-in 0.35s ease-out both;
+}
+
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+
+@media (max-width: 639px) {
+  .month {
+    padding: 16px 8px;
+  }
+
+  .month-grid {
+    gap: 2px;
+    padding: 0 2px;
+  }
+
+  .month-week {
+    padding: 2px;
+  }
+
+  .month-cell {
+    height: 64px;
+    padding: 4px;
+    font-size: 12px;
+  }
+
+  .month-cell.today {
+    padding: 3px;
+  }
+
+  .month-chips {
+    flex-wrap: wrap;
+  }
+}

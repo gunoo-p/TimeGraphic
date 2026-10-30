@@ -1,120 +1,121 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { useCallback, useState } from 'react'
+import { Navigate, Outlet, Route, Routes, useNavigate } from 'react-router'
+import { ActivityDetail } from './components/ActivityDetail'
+import { AddActivityDialog } from './components/AddActivityDialog'
+import { Toast } from './components/common/Toast'
+import { ProjectNav } from './components/ProjectNav'
+import { ACTIVITIES, MEMBERS, OTHER_PROJECTS, PROJECT, TODAY } from './mock'
+import { AutoFillScreen } from './screens/AutoFillScreen'
+import { HistoryScreen } from './screens/HistoryScreen'
+import { HomeScreen } from './screens/HomeScreen'
+import { ProjectsScreen } from './screens/ProjectsScreen'
+import { StartScreen } from './screens/StartScreen'
+import type { Activity } from './types'
+
+// shortcut: 가짜 데이터라 프로젝트 주소가 하나뿐. /api 연결 때 :projectId 로 바꾼다.
+const PROJECT_PATH = '/projects/timegraphic'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const navigate = useNavigate()
+  const [activities, setActivities] = useState(ACTIVITIES)
+  const [adding, setAdding] = useState(false)
+  const [selected, setSelected] = useState<Activity | null>(null)
+  const [toast, setToast] = useState<string | null>(null)
+  const clearToast = useCallback(() => setToast(null), [])
 
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
+      <Routes>
+        <Route path="/" element={<StartScreen onLogin={() => navigate('/projects')} />} />
+        <Route
+          path="/projects"
+          element={
+            <ProjectsScreen
+              me={MEMBERS[0]}
+              project={PROJECT}
+              activities={activities}
+              members={MEMBERS}
+              others={OTHER_PROJECTS}
+              today={TODAY}
+              onOpen={() => navigate(PROJECT_PATH)}
+              onAutoFill={() => navigate('/autofill')}
+            />
+          }
+        />
+        <Route
+          path="/autofill"
+          element={
+            <AutoFillScreen
+              projectName="스터디 사이트"
+              onBack={() => navigate('/projects')}
+              onSave={() => {
+                navigate('/projects')
+                setToast('저장했어요. 팀원 모두에게 보여요.')
+              }}
+            />
+          }
+        />
+        <Route
+          path={PROJECT_PATH}
+          element={
+            <main className="page">
+              <ProjectNav projectName={PROJECT.name} basePath={PROJECT_PATH} />
+              <Outlet />
+            </main>
+          }
         >
-          Count is {count}
-        </button>
-      </section>
+          <Route
+            index
+            element={
+              <HomeScreen
+                project={PROJECT}
+                activities={activities}
+                members={MEMBERS}
+                today={TODAY}
+                onAdd={() => setAdding(true)}
+                onSelect={setSelected}
+              />
+            }
+          />
+          <Route
+            path="history"
+            element={
+              <HistoryScreen
+                activities={activities}
+                members={MEMBERS}
+                today={TODAY}
+                since={PROJECT.start}
+                onAdd={() => setAdding(true)}
+                onSelect={setSelected}
+              />
+            }
+          />
+        </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      {adding && (
+        <AddActivityDialog
+          members={MEMBERS}
+          today={TODAY}
+          onClose={() => setAdding(false)}
+          onSave={(a) => {
+            setActivities([...activities, a])
+            setAdding(false)
+            setToast('저장했어요. 팀원 모두에게 보여요.')
+          }}
+        />
+      )}
+      {selected && (
+        <ActivityDetail
+          activity={selected}
+          activities={activities}
+          members={MEMBERS}
+          onSelect={setSelected}
+          onClose={() => setSelected(null)}
+        />
+      )}
+      {toast && <Toast message={toast} onDone={clearToast} />}
     </>
   )
 }

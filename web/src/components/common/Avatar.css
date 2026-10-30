@@ -1,0 +1,34 @@
+.avatar {
+  border-radius: 50%;
+  /* 배경이 팀원 색이라 글자는 카드 색으로 반전 (라이트=흰색, 다크=어두운색) */
+  color: var(--surface);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.avatar-sm {
+  width: 24px;
+  height: 24px;
+  font-size: 11px;
+}
+
+.avatar-md {
+  width: 36px;
+  height: 36px;
+  font-size: 14px;
+}
+
+.avatar-lg {
+  width: 44px;
+  height: 44px;
+  font-size: 16px;
+}
+
+.avatar-unknown {
+  background: var(--surface);
+  border: 2px dashed var(--unassigned);
+  color: var(--text-3);
+}

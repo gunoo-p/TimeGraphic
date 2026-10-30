@@ -1,111 +1,259 @@
+/* 색·글꼴·간격은 DESIGN.md 기준. 화면 코드에는 색 값을 직접 쓰지 않고 이 이름만 쓴다. */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --primary: #3f5bd8;
+  --primary-pressed: #3149b8;
+  --primary-text: #3f5bd8;
+  --primary-soft: #eef1fd;
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #eef0f3;
+  --text: #1a1d23;
+  --text-2: #4b5361;
+  --text-3: #6b7280;
+  --border: #d5dae0;
+  --border-strong: #8a93a0;
+  --success: #1e7f47;
+  --success-soft: #e8f5ee;
+  --warning: #9a5b00;
+  --warning-soft: #fdf3e3;
+  --error: #c8323b;
+  --error-soft: #fcecec;
+  --m1: #0f8c8c;
+  --m2: #c4621f;
+  --m3: #7a55e0;
+  --unassigned: #8a93a0;
+  --backdrop: rgba(26, 29, 35, 0.45);
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --sans: Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', Menlo, Consolas, monospace;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
   color-scheme: light dark;
+  font: 16px/1.6 var(--sans);
   color: var(--text);
   background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
+    --primary: #4a63de;
+    --primary-pressed: #3d55c9;
+    --primary-text: #8fa2f7;
+    --primary-soft: #232a45;
+    --bg: #101217;
+    --surface: #181b21;
+    --surface-2: #20242b;
+    --text: #eceef2;
+    --text-2: #b4bbc6;
+    --text-3: #8c94a1;
+    --border: #2c313a;
+    --border-strong: #68707c;
+    --success: #4cc38a;
+    --success-soft: #16291f;
+    --warning: #f0b44c;
+    --warning-soft: #2e2414;
+    --error: #f27a80;
+    --error-soft: #331a1c;
+    --m1: #3cc2c2;
+    --m2: #f0954f;
+    --m3: #a68cf5;
+    --unassigned: #6e7682;
+    --backdrop: rgba(0, 0, 0, 0.6);
   }
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  min-height: 100vh;
 }
 
 h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
+h2,
 p {
   margin: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
-code {
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* 공통 모양 */
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.page-sub {
+  font-size: 16px;
+  color: var(--text-2);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.btn {
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font: inherit;
   font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+  font-weight: 600;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-pressed);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-2);
+}
+
+.btn-text {
+  background: transparent;
+  color: var(--primary-text);
+  padding: 0 12px;
+}
+
+.btn:disabled {
+  background: var(--surface-2);
+  border-color: transparent;
+  color: var(--text-3);
+  cursor: not-allowed;
+}
+
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background: var(--surface-2);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-2);
+  background: var(--surface-2);
+  border-radius: 6px;
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+/* 확실하지 않은 값 = 흐린 글자 + 점선 */
+.unsure {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 8px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 6px;
+  color: var(--text-3);
+  font-size: 14px;
+}
+
+.undated {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.undated-title {
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 3px solid var(--primary-soft);
+  border-top-color: var(--primary);
+  animation: spin 0.8s linear infinite;
+  flex: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 639px) {
+  .page {
+    padding: 24px 16px;
+  }
+
+  .page-title {
+    font-size: 22px;
+  }
 }
